@@ -40,8 +40,8 @@ def main():
     foo()
     my_module.bar()
     print(f"Hi {settings.first_name} {settings.last_name}!")
-    print(f"{settings.__dict__ = }")
-    print(f"{locations.__dict__ = }")
+    print(f"{settings.__dict__ = }")  # noqa: E202, E251
+    print(f"{locations.__dict__ = }")  # noqa: E202, E251
     print((locations.data / "lines").read_text(encoding="utf-8"))
     print("Erroneous statement:", 1 / 0)
 
