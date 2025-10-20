@@ -1,13 +1,2 @@
 [project]
 name = "my-package"
-
-[tool.pdm.options]
-info = ["--json"]
-add = ["--frozen-lockfile", "--no-sync"]
-list = ["--fields", "name,version,groups,licenses,location,homepage"]
-export = ["--no-hashes"]
-
-[tool.pdm.scripts]
-gen-req = {cmd = "pdm export --prod --pyproject --output requirements.in"}
-gen-req-lock = {cmd = "pdm export --prod --output requirements.txt"}
-post_lock = {composite = ["gen-req", "gen-req-lock"]}

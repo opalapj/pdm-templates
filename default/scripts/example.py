@@ -42,6 +42,7 @@ def main():
     print(f'Hi {settings.first_name} {settings.last_name}!')
     print(f'{settings.__dict__ = }')
     print(f'{locations.__dict__ = }')
+    print((locations.data / "lines").read_text(encoding="utf-8"))
     print('Erroneous statement:', 1/0)
 
 

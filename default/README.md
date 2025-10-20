@@ -2,7 +2,7 @@
 
 ## Steps after initialization
 
-- go to `my-package` root directory:
+- go to project root directory:
 
         cd path/to/my-package
 
@@ -14,7 +14,7 @@
 
         type .pdm-python
 
-- show `my-package` info:
+- show project info:
 
         pdm info
 
@@ -22,22 +22,14 @@
 
         pdm install
 
-- run sandbox main script:
+- run example script:
 
-    - with `run` command:
+        pdm run python scripts/example.py
 
-            pdm run python sandbox
-    
-    - with active `venv`:
-
-            pdm venv activate | clip
-            ctrl + v
-            python sandbox
-
-    > Logs from sandbox and `my-package` should show up.
+    > Logs from `example.py` and `my-package` should show up.
     >
-    > Error should show up as well. Check `sandbox/setup/logs.log`.
+    > Error should show up as well. Check `scripts/setup/logs.log`.
 
-- go to sandbox main script and comment erroneus statement:
+- go to example script and comment erroneus statement:
 
         print('Erroneous statement:', 1/0)

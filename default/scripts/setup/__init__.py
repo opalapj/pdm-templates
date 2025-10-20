@@ -6,11 +6,11 @@ from pathlib import Path
 
 
 _setup = Path(__file__).parent
-_sandbox = _setup.parent
+_scripts = _setup.parent
 _settings = _setup / 'settings.toml'
-_logging_config = _setup / 'logging_config.toml'
+_logging_config = _setup / 'logging.toml'
 _logs = _setup / 'logs.log'
-_data = _sandbox / 'data'
+_data = _scripts / 'data'
 
 
 class Setup:
@@ -57,14 +57,14 @@ def _log_uncaught_exception():
     Wraps the default sys.excepthook with a decorator that logs uncaught
     exceptions.
     """
-    def decorator(excepthook):
+    def with_logging(excepthook):
         _catcher = logging.getLogger('catcher')
         def wrapper(*exc_info):
             _catcher.error('Uncaught exception:', exc_info=exc_info)
             excepthook(*exc_info)
         return wrapper
 
-    sys.excepthook = decorator(sys.__excepthook__)
+    sys.excepthook = with_logging(sys.__excepthook__)
 
 
 def _load_settings():
