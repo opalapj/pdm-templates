@@ -1,6 +1,6 @@
-import sys
 import logging
 import logging.config
+import sys
 import tomllib
 from pathlib import Path
 
