@@ -25,8 +25,8 @@ def foo():
     This function logs a debug message to verify that the logging setup
     is working correctly for the main script.
     """
-    logger.debug('Test debug from main script.')
-    logger.warning('Test warning from main script.')
+    logger.debug("Test debug from main script.")
+    logger.warning("Test warning from main script.")
 
 
 def main():
@@ -39,12 +39,12 @@ def main():
     """
     foo()
     my_module.bar()
-    print(f'Hi {settings.first_name} {settings.last_name}!')
-    print(f'{settings.__dict__ = }')
-    print(f'{locations.__dict__ = }')
+    print(f"Hi {settings.first_name} {settings.last_name}!")
+    print(f"{settings.__dict__ = }")
+    print(f"{locations.__dict__ = }")
     print((locations.data / "lines").read_text(encoding="utf-8"))
-    print('Erroneous statement:', 1/0)
+    print("Erroneous statement:", 1 / 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

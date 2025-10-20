@@ -7,17 +7,18 @@ class Command(BaseCommand):
     If none is given, will read from 'hello.name' config.
     """
 
-    name = 'hello'
+    name = "hello"
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '-n', '--name',
-            help='The person\'s name to whom you greet.',
+            "-n",
+            "--name",
+            help="The person's name to whom you greet.",
         )
 
     def handle(self, project, options):
         if not options.name:
-            name = project.config['hello.name']
+            name = project.config["hello.name"]
         else:
             name = options.name
-        print(f'Hello, {name}!')
+        print(f"Hello, {name}!")

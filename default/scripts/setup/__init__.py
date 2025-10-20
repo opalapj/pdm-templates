@@ -7,10 +7,10 @@ from pathlib import Path
 
 _setup = Path(__file__).parent
 _scripts = _setup.parent
-_settings = _setup / 'settings.toml'
-_logging_config = _setup / 'logging.toml'
-_logs = _setup / 'logs.log'
-_data = _scripts / 'data'
+_settings = _setup / "settings.toml"
+_logging_config = _setup / "logging.toml"
+_logs = _setup / "logs.log"
+_data = _scripts / "data"
 
 
 class Setup:
@@ -42,11 +42,11 @@ def _configure_logging():
     If the file handler's filename is not absolute, it sets the filename
     to be relative to config directory.
     """
-    with _logging_config.open('rb') as file:
+    with _logging_config.open("rb") as file:
         content = tomllib.load(file)
-    filename = Path(content['handlers']['file']['filename'])
+    filename = Path(content["handlers"]["file"]["filename"])
     if not filename.is_absolute():
-        content['handlers']['file']['filename'] = _setup / filename
+        content["handlers"]["file"]["filename"] = _setup / filename
     logging.config.dictConfig(config=content)
 
 
@@ -57,11 +57,14 @@ def _log_uncaught_exception():
     Wraps the default sys.excepthook with a decorator that logs uncaught
     exceptions.
     """
+
     def with_logging(excepthook):
-        _catcher = logging.getLogger('catcher')
+        _catcher = logging.getLogger("catcher")
+
         def wrapper(*exc_info):
-            _catcher.error('Uncaught exception:', exc_info=exc_info)
+            _catcher.error("Uncaught exception:", exc_info=exc_info)
             excepthook(*exc_info)
+
         return wrapper
 
     sys.excepthook = with_logging(sys.__excepthook__)
@@ -76,7 +79,7 @@ def _load_settings():
     :return: The settings from the TOML file.
     :rtype: dict
     """
-    with _settings.open('rb') as file:
+    with _settings.open("rb") as file:
         content = tomllib.load(file)
     return content
 
@@ -93,7 +96,7 @@ def _collect_pathlike_variables():
     variables = {}
     for name, value in globals().items():
         if isinstance(value, Path):
-            variables[name.removeprefix('_')] = value
+            variables[name.removeprefix("_")] = value
     return variables
 
 

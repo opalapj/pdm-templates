@@ -8,10 +8,7 @@ def main(core):
         command=Command,
     )
     config_item = ConfigItem(
-        description='The person\'s name.',
-        default='John',
+        description="The person's name.",
+        default="John",
     )
-    core.add_config(
-        name='hello.name',
-        config_item=config_item
-    )
+    core.add_config(name="hello.name", config_item=config_item)
