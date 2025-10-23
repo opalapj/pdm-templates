@@ -23,6 +23,7 @@ repos:
       entry: flake8
       language: system
       types: [python]
+      args: ["--extend-ignore=E501"]
     - id: mypy
       name: mypy
       entry: mypy
