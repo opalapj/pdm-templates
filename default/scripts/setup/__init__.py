@@ -44,9 +44,9 @@ def _configure_logging():
     """
     with _logging_config.open("rb") as file:
         content = tomllib.load(file)
-    filename = Path(content["handlers"]["file"]["filename"])
+    filename = Path(content["handlers"]["exceptions"]["filename"])
     if not filename.is_absolute():
-        content["handlers"]["file"]["filename"] = _setup / filename
+        content["handlers"]["exceptions"]["filename"] = _setup / filename
     logging.config.dictConfig(config=content)
 
 
